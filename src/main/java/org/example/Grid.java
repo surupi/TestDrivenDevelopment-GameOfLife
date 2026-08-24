@@ -68,14 +68,9 @@ public class Grid {
             for (int col = 0; col < cols; col++) {
                 int liveNeighbors = countLiveNeighbors(row, col);
                 boolean currentState = cells[row][col].isAlive();
-                boolean newState = false;
-
-                if (currentState) {
-                    newState = liveNeighbors == 2 || liveNeighbors == 3;
-                } else {
-                    newState = liveNeighbors == 3;
-                }
-                newCells[row][col] = new Cell(newState);
+                Cell newCell = new Cell(currentState);
+                newCell.update(liveNeighbors);
+                newCells[row][col] = newCell;
             }
         }
         cells = newCells;

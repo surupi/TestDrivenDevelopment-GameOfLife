@@ -57,6 +57,9 @@ public class GridTest {
         assertFalse(grid.isCellWithinGrid(3, -1));
         assertFalse(grid.isCellWithinGrid(6, 1));
         assertFalse(grid.isCellWithinGrid(2, 6));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> grid.getCellState(-1, 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> grid.setCellState(5, 5, true));
     }
 
     @Test
